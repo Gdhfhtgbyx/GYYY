@@ -1,1 +1,1 @@
-worker: python Gamer lounge 🎧🍕.py
+worker: python GAMERS LOUNGE 🎧🍕.py
