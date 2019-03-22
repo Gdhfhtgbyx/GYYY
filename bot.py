@@ -825,4 +825,4 @@ async def embed(ctx, *args):
     await client.delete_message(ctx.message)
 
 
-client.run('Token')
+client.run('NTU1NzIxMjk2MzcwMDczNjAx.D3FoPQ.M7EVE8IHxpI05cEmsmDdvQJaY8I')
