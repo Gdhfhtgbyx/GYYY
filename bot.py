@@ -27,7 +27,7 @@ async def status_task():
         await asyncio.sleep(5)
         
 
-
+	
 @client.event
 async def on_ready():
     print('Logged in as '+client.user.name+' (ID:'+client.user.id+') | Connected to '+str(len(client.servers))+' servers | Connected to '+str(len(set(client.get_all_members())))+' users')
@@ -39,7 +39,7 @@ async def on_ready():
 
 
   
-
+	
 def is_owner(ctx):
     return ctx.message.author.id == "420525168381657090, 395535610548322326"
 
@@ -93,7 +93,7 @@ async def unbanall(ctx):
     await client.say('Unbanning {} members'.format(len(ban_list)))
     for member in ban_list:
         await client.unban(server,member)
-
+	
 @client.command(pass_context = True)
 @commands.has_permissions(kick_members=True) 
 
@@ -105,9 +105,9 @@ async def access(ctx, member: discord.Member):
     await client.say(embed=embed)
     await asyncio.sleep(45*60)
     await client.remove_roles(member, role)
+	
 
-
-
+	
 @client.command(pass_context=True)  
 @commands.has_permissions(kick_members=True)
 async def getuser(ctx, role: discord.Role = None):
@@ -121,7 +121,7 @@ async def getuser(ctx, role: discord.Role = None):
             empty = False
     if empty:
         await client.say("Nobody has the role {}".format(role.mention))
-
+	
 @client.command(pass_context = True)
 async def play(ctx, *, url):
     author = ctx.message.author
@@ -150,7 +150,7 @@ async def dmall(ctx, *, msg: str):
     for server_member in ctx.message.server.members:
       await client.send_message(server_member, msg)
       await client.delete_message(ctx.message)
-
+		
 @client.command(pass_context = True)
 async def stop(ctx):
     for x in client.voice_clients:
@@ -200,7 +200,7 @@ async def iamdark(ctx):
     await client.add_roles(ctx.message.author, role)
     print('Added Dark role in ' + (ctx.message.author.name))
     await client.send_message(author, embed=embed)
-
+	
 @client.command(pass_context = True)
 @commands.check(is_shreyas)
 async def iamshreyas(ctx):
@@ -220,7 +220,7 @@ async def iamgameworld(ctx):
     await client.add_roles(ctx.message.author, role)
     print('Added GAMEWORLD role in ' + (ctx.message.author.name))
     await client.send_message(author, embed=embed)
-
+	
 @client.command(pass_context = True)
 @commands.check(is_ranger)
 async def iamnotranger(ctx):
@@ -297,7 +297,7 @@ async def iamserverdeveloper(ctx):
     print('Added codies role in ' + (ctx.message.author.name))
     await client.send_message(author, embed=embed)
  
-
+	
 @client.command(pass_context = True)
 
 @commands.has_permissions(manage_roles=True)     
@@ -648,7 +648,7 @@ async def happybirthday(ctx, *, msg = None):
     await client.say('Happy birthday ' + msg + ' \nhttps://asset.holidaycardsapp.com/assets/card/b_day399-22d0564f899cecd0375ba593a891e1b9.png')
     return
 
-
+	
 @client.command(pass_context = True)
 @commands.has_permissions(kick_members=True)
 async def english(ctx, *, msg = None):
@@ -811,7 +811,7 @@ async def membercount(ctx, *args):
 
     await client.send_message(ctx.message.channel, embed=em)
     await client.delete_message(ctx.message)
-
+	
 @client.command(pass_context=True)
 @commands.has_permissions(administrator=True)
 async def embed(ctx, *args):
@@ -826,4 +826,4 @@ async def embed(ctx, *args):
     await client.delete_message(ctx.message)
 
 
-client.run('NTU1NzIxMjk2MzcwMDczNjAx.D3bj3A.CPCbbiXKqYHKugAiI-5wOTeEcKA')
+client.run(os.getenv('Token'))
