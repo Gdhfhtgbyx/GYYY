@@ -825,4 +825,4 @@ async def embed(ctx, *args):
     await client.send_message(ctx.message.channel, embed=Embed(color = color, description=text))
     await client.delete_message(ctx.message)
 
-client.run('NTU1NzIxMjk2MzcwMDczNjAx.XQFu7A.LAAA7vi7dSZvgXY8NmjKAHuFEfg')
+client.run('NTU3Mjg1Mjk2NDIxNjAxMjkz.XQVHtw.DiADTuLSZV5RIUk1XhUwztJfFC0')
