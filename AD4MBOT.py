@@ -2,6 +2,8 @@ import discord
 from discord.ext.commands import Bot
 from discord.ext import commands
 from discord.ext.commands.cooldowns import BucketType
+import webserver
+from webserver import keep alive
 import asyncio
 import platform
 import colorsys
@@ -40,20 +42,6 @@ async def on_ready():
 
   
 	
-def is_owner(ctx):
-    return ctx.message.author.id == "420525168381657090, 395535610548322326"
-
-def is_dark(ctx):
-    return ctx.message.author.id == "420525168381657090"
-
-def is_shreyas(ctx):
-    return ctx.message.author.id == "376602841625919488"
-
-def is_gameworld(ctx):
-    return ctx.message.author.id == "402075464694366211"
-
-def is_ranger(ctx):
-    return ctx.message.author.id == "304911836460089345"
 
 @client.command(pass_context = True)
 @commands.check(is_owner)
@@ -190,60 +178,6 @@ async def userinfo(ctx, user: discord.Member):
     embed.add_field(name="Joined", value=user.joined_at)
     embed.set_thumbnail(url=user.avatar_url)
     await client.say(embed=embed)
-    
-@client.command(pass_context = True)
-@commands.check(is_dark)
-async def iamdark(ctx):
-    author = ctx.message.author
-    await client.delete_message(ctx.message)
-    role = discord.utils.get(ctx.message.server.roles, name='Utkarsh Kumar')
-    await client.add_roles(ctx.message.author, role)
-    print('Added Dark role in ' + (ctx.message.author.name))
-    await client.send_message(author, embed=embed)
-	
-@client.command(pass_context = True)
-@commands.check(is_shreyas)
-async def iamshreyas(ctx):
-    author = ctx.message.author
-    await client.delete_message(ctx.message)
-    role = discord.utils.get(ctx.message.server.roles, name='ShreyasMF')
-    await client.add_roles(ctx.message.author, role)
-    print('Added SHREYAS role in ' + (ctx.message.author.name))
-    await client.send_message(author, embed=embed)
-
-@client.command(pass_context = True)
-@commands.check(is_ranger)
-async def iamgameworld(ctx):
-    author = ctx.message.author
-    await client.delete_message(ctx.message)
-    role = discord.utils.get(ctx.message.server.roles, name='Gameworld')
-    await client.add_roles(ctx.message.author, role)
-    print('Added GAMEWORLD role in ' + (ctx.message.author.name))
-    await client.send_message(author, embed=embed)
-	
-@client.command(pass_context = True)
-@commands.check(is_ranger)
-async def iamnotranger(ctx):
-    author = ctx.message.author
-    await client.delete_message(ctx.message)
-    role = discord.utils.get(ctx.message.server.roles, name='Dark Ranger')
-    await client.remove_roles(ctx.message.author, role)
-    print('Removed DarkRanger role in ' + (ctx.message.author.name))
-    await client.send_message(author, embed=embed)
-
-@client.command(pass_context=True)
-async def registerme(ctx):
-    author = ctx.message.author
-    r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-    embed = discord.Embed(title="Successfully added", description="REGISTERED role", color = discord.Color((r << 16) + (g << 8) + b))
-    embed.set_image(url = 'https://preview.ibb.co/e3iyap/ezgif_3_7dcc4d6bec.gif')
-    embed.add_field(name="Enjoy! ", value="Thanks for registering in Mini Militia Tournament", inline=True)
-    
-    await client.delete_message(ctx.message)
-    role = discord.utils.get(ctx.message.server.roles, name='W4w tourney')
-    await client.add_roles(ctx.message.author, role)
-    print('Added REGISTERED role in ' + (ctx.message.author.name))
-    await client.send_message(author, embed=embed)
     
 @client.command(pass_context=True)
 async def iamcoder(ctx):
