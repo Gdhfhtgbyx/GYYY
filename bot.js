@@ -6,6 +6,9 @@ const green = botconfig.green;
 const orange = botconfig.orange;
 const errors = require("../utils/errors.js");
  
+{
+  "prefix": "!"
+}
 
 client.on('ready', () => {
 
