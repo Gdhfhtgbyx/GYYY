@@ -39,39 +39,6 @@ async def on_ready():
     print('Created by Utkarsh')
     client.loop.create_task(status_task())
 
-
-  
-	
-
-@client.command(pass_context = True)
-@commands.check(is_owner)
-async def restart():
-    await client.logout()
-
-@client.event
-async def on_message(message):
-	await client.process_commands(message)
-
-@client.event
-async def on_member_join(member):
-    print("In our server" + member.name + " just joined")
-    r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-    embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
-    embed.set_author(name='Welcome message')
-    embed.add_field(name = '__Welcome to Our Server__',value ='**Hope you will be active here. Check Our server rules and never try to break any rules. ',inline = False)
-    embed.set_image(url = 'https://media.giphy.com/media/OkJat1YNdoD3W/giphy.gif')
-    await client.send_message(member,embed=embed)
-    print("Sent message to " + member.name)
-    channel = discord.utils.get(client.get_all_channels(), server__name='DarkBot Official Server', name='darkbot-servers-join-leave-log')
-    r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-    embed = discord.Embed(title=f'Welcome {member.name} to {member.server.name}', description='Do not forget to check <#474572305192845312> and never try to break any one of them', color = discord.Color((r << 16) + (g << 8) + b))
-    embed.add_field(name='__Thanks for joining__', value='**Hope you will be active here.**', inline=True)
-    embed.add_field(name='Your join position is', value=member.joined_at)
-    embed.set_image(url = 'https://media.giphy.com/media/OkJat1YNdoD3W/giphy.gif')
-    embed.set_thumbnail(url=member.avatar_url)
-    await client.send_message(channel, embed=embed)
-
-
 @client.command(pass_context=True)
 @commands.has_permissions(kick_members=True)
 
@@ -387,33 +354,6 @@ async def modhelp(ctx):
     await client.send_message(author,embed=embed)
     await client.say('📨 Check DMs For Information')
 
-@client.command(pass_context = True)
-async def generalhelp(ctx):
-    author = ctx.message.author
-    r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-    embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
-    embed.add_field(name = 'd!poll ',value ='Use it like ``d!poll "Question" "Option1" "Option2" ..... "Option9"``.',inline = False)
-    embed.add_field(name = 'd!guess ',value ='To play guess game use ``d!guess <number> and number should be between 1-10``',inline = False)
-    embed.add_field(name = 'd!github ',value ='Use it like- ``d!github uksoftworld/DarkBot``',inline = False)
-    embed.add_field(name = 'd!bottutorial ',value ='Use it like ``d!bottutorial <tutorial name by darklegend>``',inline = False)
-    embed.add_field(name = 'd!dyno ',value ='Use it like ``d!d!dyno <dyno command name>``',inline = False)
-    embed.add_field(name = 'd!donate ',value ='Use it to donate us and get a special post on Official DarkBot server.',inline = False)
-    embed.add_field(name = 'd!ownerinfo ',value ='To get basic information about owner.',inline = False)
-    embed.add_field(name = 'd!sourcecode ',value ='Use it to see darkbot sourcecode.',inline = False)
-    embed.add_field(name = 'd!upvote ',value ='Use it to Upvote our bot and help us to grow',inline = False)
-    embed.add_field(name = 'd!authlink ',value ='Use it to get authorizing link to authorize this bot to your server.',inline = False)
-    embed.add_field(name = 'd!happybirthday @user ',value ='To wish someone happy birthday',inline = False)
-    embed.add_field(name = 'd!technews ',value ='Use it to get tech news',inline = False)
-    embed.add_field(name = 'd!googlefy ',value ='Use it like ``d!googlefy <string>``.',inline = False)
-    embed.add_field(name = 'd!spacenews ',value ='Use it to get space news',inline = False)
-    embed.add_field(name = 'd!phynews ',value ='Use it to get physycs',inline = False)
-    embed.add_field(name = 'd!verify ',value ='Use it to get verified role. Note- It needs proper setup.',inline = False)
-    embed.add_field(name = 'd!flipcoin ',value ='Flipps coin',inline = False)
-    embed.add_field(name = 'd!rolldice ',value ='Rolls dice',inline = False)
-    embed.add_field(name = 'd!avatar @user ',value ='Shows avatar',inline = False) 	
-    await client.send_message(author,embed=embed)
-    await client.say('📨 Check DMs For Information')
-
 @client.command(pass_context=True)  
 @commands.has_permissions(kick_members=True)     
 async def kick(ctx,user:discord.Member):
@@ -603,16 +543,6 @@ async def hindi(ctx, *, msg = None):
     else: await client.say(msg + ' abe oo angrez ke bacche chup chap hindi me baat kar nahi to mai pagla jaunga')
     return
 
-
-@client.command(pass_context = True) 
-async def htmltutorial(ctx, *, msg = None):
-    await client.delete_message(ctx.message)
-    if '@here' in msg or '@everyone' in msg:
-      return
-    if not msg: await client.say("Please specify a user")
-    else: await client.say('Welcome' + msg +  ', Please check http://uksoft.000webhostapp.com/Programming-Tutorials/index.html')
-    return
-   
 @client.command(pass_context = True)
 async def github(ctx, *, msg = None):
     if '@here' in msg or '@everyone' in msg:
@@ -627,14 +557,6 @@ async def reactionroles(ctx, *, msg = None):
       return
     if not msg: await client.say("Check this video to setup YAGPDB BOT- https://www.youtube.com/watch?v=icAqiw6txRQ")
     else: await client.say('Check this video to setup YAGPDB BOT- https://www.youtube.com/watch?v=icAqiw6txRQ ' + msg)
-    return
-
-@client.command(pass_context = True)
-async def bottutorial(ctx, *, msg = None):
-    if '@here' in msg or '@everyone' in msg:
-      return
-    if not msg: await client.say("Tutorial not found or maybe you have mistyped it")
-    else: await client.say('https://github.com/uksoftworld/discord.py-tutorial/blob/master/' + msg + '.py')
     return
 
 @client.command(pass_context = True)
