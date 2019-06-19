@@ -65,6 +65,4 @@ async def resume(ctx):
     await client.send_message(ctx.message.channel, "Resumed `%s`" % player.title)
 
 
-
-
 client.run(str(os.environ.get('BOT_TOKEN')))
